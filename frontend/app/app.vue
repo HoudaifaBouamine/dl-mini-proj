@@ -2,30 +2,29 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import Chart from 'primevue/chart';
 import Button from 'primevue/button';
-import Card from 'primevue/card';
 import Avatar from 'primevue/avatar';
 import ProgressBar from 'primevue/progressbar';
 import Tag from 'primevue/tag';
+import FileUpload from 'primevue/fileupload';
+import SelectButton from 'primevue/selectbutton';
 
+const activeTab = ref('dashboard');
+
+// --- Dashboard Live Data ---
 const chartData = ref(null);
 const chartOptions = ref(null);
 
-// Generate realistic-looking ECG mock data
 let timeIndex = 0;
 const generateECGDataPoint = () => {
   const t = timeIndex % 100;
   timeIndex++;
-  
-  // P wave
+  // Basic NSR mock
   if (t > 10 && t < 20) return 0.2 * Math.sin((t - 10) * Math.PI / 10);
-  // QRS complex
   if (t === 30) return -0.3;
   if (t === 32) return 1.5;
   if (t === 34) return -0.4;
-  // T wave
   if (t > 50 && t < 70) return 0.4 * Math.sin((t - 50) * Math.PI / 20);
-  
-  return (Math.random() - 0.5) * 0.05; // noise
+  return (Math.random() - 0.5) * 0.05;
 };
 
 const dataPoints = Array.from({ length: 150 }, () => 0);
