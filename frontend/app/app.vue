@@ -33,20 +33,96 @@ let intervalId;
 const updateChart = () => {
   dataPoints.push(generateECGDataPoint());
   dataPoints.shift();
-  
   chartData.value = {
     labels: Array.from({ length: 150 }, (_, i) => i),
+    datasets: [{
+      label: 'Lead II',
+      data: [...dataPoints],
+      borderColor: '#3b82f6', // primary-500
+      tension: 0.4,
+      borderWidth: 2.5,
+      pointRadius: 0,
+    }]
+  };
+};
+
+// --- Comparison & Explorer Data ---
+const viewOptions = ref(['Normal (N)', 'Supraventricular (S)', 'Ventricular (V)', 'Fusion (F)', 'Unknown (Q)']);
+const selectedView = ref('Normal (N)');
+
+const comparisonData = ref(null);
+const comparisonOptions = ref(null);
+
+const generateStaticWave = (type) => {
+    const arr = [];
+    for(let t=0; t<100; t++) {
+        if(type === 'Normal (N)') {
+            if (t > 10 && t < 20) arr.push(0.2 * Math.sin((t - 10) * Math.PI / 10));
+            else if (t === 30) arr.push(-0.3);
+            else if (t === 32) arr.push(1.5);
+            else if (t === 34) arr.push(-0.4);
+            else if (t > 50 && t < 70) arr.push(0.4 * Math.sin((t - 50) * Math.PI / 20));
+            else arr.push(0);
+        } else if (type === 'Ventricular (V)') {
+             // PVC - wide and bizarre QRS
+             if (t > 25 && t < 45) arr.push(2.0 * Math.sin((t - 25) * Math.PI / 20));
+             else if (t > 50 && t < 80) arr.push(-0.8 * Math.sin((t - 50) * Math.PI / 30));
+             else arr.push(0);
+        } else {
+             // Fallback/other shapes
+             if (t === 30) arr.push(-0.1);
+             else if (t === 32) arr.push(0.8);
+             else if (t === 34) arr.push(-0.5);
+             else arr.push(0);
+        }
+    }
+    return arr;
+};
+
+const loadComparison = () => {
+   comparisonData.value = {
+    labels: Array.from({ length: 100 }, (_, i) => i),
     datasets: [
       {
-        label: 'Lead II',
-        data: [...dataPoints],
-        borderColor: '#2dd4bf', // primary-400
+        label: 'Normal Baseline',
+        data: generateStaticWave('Normal (N)'),
+        borderColor: '#94a3b8', 
+        borderDash: [5, 5],
         tension: 0.4,
         borderWidth: 2,
+        pointRadius: 0,
+      },
+      {
+        label: selectedView.value,
+        data: generateStaticWave(selectedView.value),
+        borderColor: '#ef4444', // red-500 for anomaly
+        tension: 0.4,
+        borderWidth: 3,
         pointRadius: 0,
       }
     ]
   };
+}
+
+// --- File Upload State ---
+const uploadedImage = ref(null);
+const isAnalyzing = ref(false);
+const analysisComplete = ref(false);
+
+const onUpload = (event) => {
+    const file = event.files[0];
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        uploadedImage.value = e.target.result;
+        isAnalyzing.value = true;
+        analysisComplete.value = false;
+        // Simulate AI analysis delay
+        setTimeout(() => {
+            isAnalyzing.value = false;
+            analysisComplete.value = true;
+        }, 3000);
+    };
+    reader.readAsDataURL(file);
 };
 
 onMounted(() => {
