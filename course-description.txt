@@ -1,0 +1,44 @@
+Module: Deep Learning.
+
+Coefficient : 3.
+
+Credit: 4.
+
+Hourly volumes :
+
+        Course: 30 h. 
+
+        TP/TD: 30 h.
+
+        Personal Work: 30h.
+
+        Total: 90h.
+
+Semester: S4.
+
+Prerequisites: Machine Learning.
+
+Objectifs : 
+
+Develop intelligent software to automate routine labor, understand speech or images, make diagnoses in medicine and support basic scientific research ;
+Solving the tasks that are easy for people to perform but hard for people to describe formally ;
+Apply deep learning models for retrieval of information and machine translation ;
+Develop an artificial Intelligence system for the deep neural network-based applications ;
+Evaluation of various algorithms using deep learning ;
+Design of intelligent model using algorithms of deep learning.
+Content :
+Foundations for DL (3h)
+Optimizing Deep Neural Networks(5h)
+Recurrent Neural Networks(6h)
+Convolution Neural Networks(8h)
+Transfert Learning(2h)
+Dimensionality Reduction with Deep Learning (6h)
+Personal Work :
+
+Labs/projects for each Architecture : Facial Expression analysis and Object Detection, Plant Disease Identification-using-CNN, Speech-Separation, Handwritten character recognition system, Transfer Learning, etc
+
+Bibliographie :
+
+Deep Learning with Python by François Chollet, Manning Publications Co, ISBN: 9781617294433
+Deep Learning - A Practical Approach by Rajiv Chopra, Khana Publications, ISBN: 9789386173416
+Deep Learning by Ian Goodfellow and Yoshua Bengio and Aaron CourvillePublished by An MIT Press book.
