@@ -1,0 +1,14 @@
+MINI PROJECT
+1- Chose a deep learning application that is based on one of these DL networks: LLMS,
+Diffusion and GAN models, Transformers and their variants, recent auto encoders
+(Image and video analysis, style transfer, data augmentation, anomaly detection, ECG
+signal processing, …,etc). You can choose any application other than text processing, as
+long as text is used only as auxiliary information and not as the main data .
+2- Deploy the best model in an application (web or otherwise) to perform predictions on
+new instances entered by the user.
+3- Write a report that presents details about the architecture, the dataset(s) used, code, with
+explanations on all steps, a discussion, and conclusion on the results obtained
+4- The report must be added to the platform by a single member of the group in the
+dedicated space on Moodle (groups of n students <6) and the code must be added to
+guithub.
+5- Consultation sessions will be organized at the end of the semester. 
