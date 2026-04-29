@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+.output/
+.nuxt/
+dist/
+.cache/
+
+# Sensitive data
+kaggle.json
+*.pem
+*.key
+
+# Tool specific
+.agent/
+.vscode/
+.idea/
+
+# Large files/logs
+kaggle_output/
+*.log
+training/**/output.txt
+
+# OS files
+.DS_Store
+Thumbs.db
