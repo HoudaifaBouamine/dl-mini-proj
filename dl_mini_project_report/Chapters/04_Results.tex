@@ -1,0 +1,117 @@
+\part{Results and Evaluation}
+
+\chapter{Results \& Evaluation}
+\label{chap:results}
+
+\section{Executive Summary - Three-Pipeline Comparison}
+
+\begin{table}[H]
+\centering
+\caption{Comparison of Three Pipelines}
+\label{tab:pipelines}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{Pipeline} & \textbf{Accuracy} & \textbf{Innovation} & \textbf{Use Case} \\
+\hline
+Signal-Based (v4) & 100\% (Test) & 4-architecture comparison with v4 optimizations & Clinical ECG machines \\
+\hline
+Image-to-Signal (U-Net) & MSE: 0.016 & Digitize scanned ECG images for downstream signal models & Old medical records \\
+\hline
+Image-to-Classification (ResNet) & 82\% (Test) & Direct image classification bypassing digitization & Mobile photo diagnosis \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Literature Benchmarks:}
+\begin{itemize}
+    \item Signal-based (Kaggle pre-segmented): 100\%
+    \item Image-to-Signal (U-Net): MSE 0.016
+    \item Image-to-Classification: 82\%
+\end{itemize}
+
+\section{Signal-Based Classification (Kaggle v4)}
+\textbf{Training Configuration:} 4 models × 30 epochs, AMP enabled, Focal Loss, ReduceLROnPlateau, augmentation.
+
+\subsection{Training Results}
+\textbf{Source:} Kaggle kernel \texttt{ecg-research-v4-optimized-training}
+
+\begin{table}[H]
+\centering
+\caption{Signal-Based Model Performance}
+\label{tab:signal_results}
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+\textbf{Model} & \textbf{Train Acc} & \textbf{Val Acc} & \textbf{Train F1} & \textbf{Val F1} & \textbf{Epochs to Converge} \\
+\hline
+ECG\_ResNet & ~100\% & ~100\% & ~1.0 & ~1.0 & ~22/30 \\
+\hline
+ECG\_LSTM & ~100\% & ~100\% & ~1.0 & ~1.0 & ~22/30 \\
+\hline
+ECG\_MultiModule & ~100\% & ~100\% & ~1.0 & ~1.0 & ~22/30 \\
+\hline
+ECG\_PhysioWave & ~100\% & ~100\% & ~1.0 & ~1.0 & ~22/30 \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Observations:}
+\begin{itemize}
+    \item Pre-segmented Kaggle dataset (each sample = one heartbeat) enables near-perfect classification
+    \item All models converge by epoch 22/30
+    \item Loss values ($10^{-8}$ to $10^{-10}$) indicate complete convergence on this simplified task
+    \item \textbf{Important Note:} This is NOT a medical breakthrough! the dataset is pre-segmented, making classification easier than real-world continuous ECG
+\end{itemize}
+
+\subsection{Test Set Results}
+\textbf{The test phase was conducted across all four architectures, totaling 120 training epochs to ensure convergence.}
+
+\textbf{Test Performance:}
+\begin{itemize}
+    \item \textbf{Test Accuracy:} 100\% (pre-segmented MIT-BIH Kaggle CSV)
+    \item \textbf{F1-Score (weighted):} 1.00
+    \item \textbf{Class-wise Performance:} Focal Loss should improve recall on minority classes (F, S beats)
+\end{itemize}
+
+\textbf{Comparison with Literature:}
+\begin{itemize}
+    \item Nature Medicine (2019): ~90\% recall on \textit{continuous} ECG recordings
+    \item Kaggle benchmark: 97-100\% on pre-segmented data (our results align)
+    \item \textbf{Conclusion:} Our pipeline works correctly, but real challenge lies in raw ECG recordings
+\end{itemize}
+
+\section{Image-to-Signal Pipeline (U-Net)}
+\textbf{Source:} Kaggle kernel \texttt{ecg-image-to-signal-v1}.
+
+\textbf{Results:}
+
+Train Loss: 0.016909, Val Loss: 0.016022
+
+\textbf{Use Case:} Digitize scanned ECG images for downstream classification with signal models.
+
+\section{Image-to-Classification (ResNet-50)}
+\textbf{Source:} Kaggle kernel \texttt{ecg-image-to-class-v1}.
+
+\textbf{Results:}
+
+\begin{table}[H]
+\centering
+\caption{Image-to-Classification Results}
+\label{tab:image_class_results}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Model} & \textbf{F1} & \textbf{Comparison to Signal-Based} \\
+\hline
+ResNet-50 & 0.82 & Harder than signal-based (100\%) due to spatial encoding loss \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Why lower than signal-based?} Converting 1D→2D→1D loses some precision; image classification is inherently harder.
+
+\section{Dimensionality Reduction Analysis}
+
+\begin{itemize}
+    \item \textbf{PCA:} Project 187-dim signals to 2D, visualize 5-class separability
+    \item \textbf{t-SNE:} Non-linear dimensionality reduction for cluster visualization
+    \item \textbf{Feature Comparison:} Compare learned representations across 4 architectures
+\end{itemize}

@@ -1,0 +1,34 @@
+\part{Background}
+
+\chapter{ECG Signal Processing Basics}
+\label{chap:background}
+
+Electrocardiogram (ECG) signals are 1D time-series recordings of cardiac electrical activity, characterized by key morphological features: P wave, QRS complex, and T wave. Arrhythmia classes are defined by the Association for the Advancement of Medical Instrumentation (AAMI): Normal (N), Supraventricular ectopic (S), Ventricular ectopic (V), Fusion (F), and Unknown (Q).
+
+\section{Deep Learning for ECG Classification}
+Prior work demonstrates:
+\begin{itemize}
+    \item 1D CNNs (ResNet) achieve high performance via local morphological feature extraction
+    \item Bidirectional LSTMs capture long-term temporal dependencies in ECG rhythms
+    \item Hybrid CNN-LSTM-Transformer models combine local, sequential, and global feature learning
+    \item Multi-scale transformers (PhysioWave) simulate wavelet decomposition for noise-robust feature extraction
+\end{itemize}
+
+\section{Image-Based ECG Analysis}
+Two advanced research directions are implemented:
+
+\subsection{Image-to-Signal Pipeline}
+Architecture: U-Net adapted for 2D-to-1D conversion (CNN encoder + 1D decoder). Process: Generate synthetic ECG images from 1D signals (simulating scanned medical records), train U-Net to reconstruct original signals. Innovation: Enables using 1D classifiers (ResNet, LSTM, etc.) on digitized ECG images.
+
+\subsection{Image-to-Classification Pipeline}
+Architecture: Vision Transformer (ViT) via timm library, with transfer learning from ImageNet. Process: Generate 2D ECG images from signals, directly classify using ViT without digitization. Innovation: End-to-end deep learning bypassing signal extraction, suitable for mobile photo diagnosis.
+
+\section{Course Alignment}
+This project aligns with the Deep Learning course (ESI, S4):
+\begin{itemize}
+    \item \textbf{CNNs:} 1D ResNet, multi-scale convolutions
+    \item \textbf{RNNs:} Bidirectional LSTM
+    \item \textbf{Transformers:} Multi-Module, PhysioWave
+    \item \textbf{Transfer Learning:} Vision Transformer with ImageNet weights
+    \item \textbf{Dimensionality Reduction:} PCA and t-SNE visualization
+\end{itemize}

@@ -1,0 +1,98 @@
+\part{Methodology and Implementation}
+
+\chapter{Proposed Methodology}
+\label{chap:methodology}
+
+\section{Signal-Based Classification (Kaggle v4)}
+All models share a unified input/output interface for direct comparison. Training for 30 epochs.
+
+\subsection{1D ResNet (CNN)}
+34-layer 1D residual network inspired by Nature Medicine cardiologist-level arrhythmia detection.
+\begin{itemize}
+    \item \textbf{Components:} ResBlock1D with skip connections, 4 layer groups (64/128/256/512 channels), adaptive average pooling, linear classifier
+    \item \textbf{Result:} 100\% train/validation accuracy (see Chapter \ref{chap:results})
+\end{itemize}
+
+\subsection{Bidirectional LSTM (RNN)}
+2-layer bidirectional LSTM with 128 hidden units per direction.
+\begin{itemize}
+    \item \textbf{Result:} 100\% train/validation accuracy
+\end{itemize}
+
+\subsection{Multi-Module Hybrid (CNN+LSTM+Transformer)}
+Three-stage architecture:
+\begin{enumerate}
+    \item \textbf{CNN:} 32-channel 5x1 conv + BatchNorm + ReLU + MaxPool2d
+    \item \textbf{LSTM:} 2-layer bidirectional LSTM (64 hidden units per direction)
+    \item \textbf{Transformer:} 2-layer Transformer Encoder (8 heads, 128 model dim)
+\end{enumerate}
+\begin{itemize}
+    \item \textbf{Result:} 100\% train/validation accuracy
+    \item \textbf{Advantage:} Combines strengths of all three architecture paradigms
+\end{itemize}
+
+\subsection{PhysioWave-Inspired Multi-Scale Transformer}
+Multi-scale feature extraction with parallel 1D convolutions (kernel sizes 3/7/11), simulating wavelet decomposition.
+\begin{itemize}
+    \item \textbf{Result:} 100\% train/validation accuracy
+    \item \textbf{Advantage:} Noise-robust, multi-resolution feature analysis
+\end{itemize}
+
+\section{Image-to-Signal Pipeline}
+\textbf{Motivation:} Real-world ECGs are often scanned images. This pipeline digitizes them.
+
+\subsection{Image Generation}
+Convert 1D signals to 2D images simulating ECG paper (grid lines, noise, variable line width). On-the-fly generation in ECGImageSignalDataset.
+
+\subsection{U-Net Architecture}
+\begin{itemize}
+    \item \textbf{Encoder:} 2D CNN (3 pooling layers) to extract visual features
+    \item \textbf{Decoder:} 1D CNN to reconstruct signal from feature maps
+    \item \textbf{Loss:} MSE between reconstructed and original signal
+\end{itemize}
+
+\section{Image-to-Classification Pipeline}
+\textbf{Motivation:} End-to-end classification bypassing digitization.
+
+\subsection{Vision Transformer (ViT)}
+\begin{itemize}
+    \item \textbf{Backbone:} Pre-trained ViT from timm library (transfer learning)
+    \item \textbf{Input:} 224x224 RGB images generated from signals
+    \item \textbf{Output:} 5-class arrhythmia classification
+\end{itemize}
+
+\chapter{Implementation Details}
+\label{chap:implementation}
+
+\section{Training Pipeline}
+Implemented in OptimizedTrainer class (v4):
+\begin{itemize}
+    \item \textbf{Loss Function:} Focal Loss (handles class imbalance)
+    \item \textbf{Optimizer:} Adam with ReduceLROnPlateau scheduling
+    \item \textbf{Mixed Precision:} AMP via torch.cuda.amp.GradScaler()
+    \item \textbf{Augmentation:} Noise injection, temporal shifting
+    \item \textbf{Epochs:} 30 per model
+    \item \textbf{Logging:} TensorBoard integration
+\end{itemize}
+
+\section{Frameworks and Libraries}
+\begin{itemize}
+    \item \textbf{Deep Learning:} PyTorch 2.x
+    \item \textbf{Data Processing:} Pandas, NumPy, Scikit-learn
+    \item \textbf{Logging:} TensorBoard, TQDM
+    \item \textbf{Frontend:} Nuxt.js 3 (Vue 3, TypeScript)
+\end{itemize}
+
+\section{Code Structure}
+\begin{itemize}
+    \item \texttt{ecg\_unified\_pipeline.py}: Single-file unified pipeline with all models and trainer
+    \item \texttt{training/v1-v4/}: Versioned training notebooks, plans, and logs
+    \item \texttt{research/}: Image-to-signal and image-to-class literature summaries
+    \item \texttt{frontend/}: Nuxt.js web application scaffold
+\end{itemize}
+
+\section{Hardware and Environment}
+\begin{itemize}
+    \item \textbf{Development:} Local Linux machine (Intel i5, 16GB RAM)
+    \item \textbf{Frontend:} Node.js 20.x, pnpm package manager
+\end{itemize}

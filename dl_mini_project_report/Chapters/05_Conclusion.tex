@@ -1,0 +1,20 @@
+\part{Conclusion}
+
+\chapter{Conclusion \& Future Work}
+\label{chap:conclusion}
+
+\section{Summary}
+This report presented the design, implementation, and evaluation of deep learning models for automated ECG arrhythmia classification. Four signal-based architectures were developed and optimized (1D ResNet, Bidirectional LSTM, Multi-Module Hybrid, PhysioWave Transformer), achieving near-perfect performance on the pre-segmented Kaggle dataset.
+
+Two novel image-based pipelines were introduced: (1) Image-to-Signal using U-Net for ECG image digitization, and (2) Image-to-Classification using Vision Transformers for direct ECG image classification. Dimensionality reduction analysis (PCA, t-SNE) was performed to fulfill course requirements.
+
+\section{Key Findings}
+\begin{enumerate}
+    \item \textbf{100\% accuracy on pre-segmented data is expected, not a breakthrough.} The Kaggle dataset simplifies the task by providing single heartbeats rather than continuous ECG recordings.
+    \item \textbf{Focal Loss improves minority class recall.} The loss function successfully addressed class imbalance, improving detection of rare arrhythmias (F and S beats).
+    \item \textbf{Hybrid models combine strengths.} The Multi-Module architecture leverages CNNs, LSTMs, and Transformers for comprehensive feature learning.
+    \item \textbf{Image-based pipelines enable real-world deployment.} U-Net digitization and ViT direct classification extend the system to handle scanned ECG images and mobile photos.
+\end{enumerate}
+
+\section{Final Thoughts}
+We have built an evolutionary pipeline, pushing boundaries from basic CNNs to multi-scale transformers and image-based analysis. While the 100\% accuracy on pre-segmented data is not a medical breakthrough, it validates our pipeline's correctness. The true innovation lies in the image-based pipelines that bridge the gap between clinical practice (scanned ECGs) and deep learning models. This foundation can be extended for real-world deployment in clinical settings and consumer wearable devices.

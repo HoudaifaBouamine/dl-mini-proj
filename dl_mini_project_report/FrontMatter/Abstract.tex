@@ -1,0 +1,17 @@
+% Abstract
+\vspace*{4cm}
+\begin{center}
+    {\Large\bf Abstract}
+\end{center}
+\vskip 0.5cm
+\vskip 0.5cm
+
+This report presents the design, implementation, and evaluation of deep learning models for automated ECG arrhythmia classification using the MIT-BIH Arrhythmia Database. Four architectures are developed: 1D ResNet, Bidirectional LSTM, a CNN-LSTM-Transformer hybrid, and a PhysioWave-inspired multi-scale transformer. A unified training pipeline with v4 optimizations (Automatic Mixed Precision, Learning Rate scheduling, Signal Augmentation, and Focal Loss) achieves excellent performance on the pre-segmented Kaggle dataset.
+
+To address real-world deployment scenarios, two novel pipelines are introduced: (1) Image-to-Signal using U-Net digitization of ECG images into 1D signals, and (2) Image-to-Classification using Vision Transformers for direct ECG image classification. Dimensionality reduction analysis (PCA, t-SNE) is performed to align with course requirements. The report demonstrates proficiency in CNNs, RNNs, Transformers, Transfer Learning, and Dimensionality Reduction as required by the Deep Learning module.
+
+\providecommand{\keywords}[1]{
+  \small
+  \textbf{\textit{Keywords---}} #1
+}
+\keywords{Deep Learning, ECG Classification, Arrhythmia Detection, Vision Transformer, U-Net, Multi-Scale Transformer, MIT-BIH}

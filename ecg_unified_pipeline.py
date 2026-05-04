@@ -1,14 +1,14 @@
 """
 Unified ECG Deep Learning Pipeline
-Designed for Google Colab.
+Optimized for Kaggle Kernels.
 
 This script contains reusable components to train and compare multiple 
 Deep Learning models (CNN, RNN, Transformer) on ECG data.
 
-To use in Colab:
-1. Create a new notebook.
-2. Copy these components into cells.
-3. Upload your dataset (e.g., Kaggle MIT-BIH CSVs) or mount Google Drive.
+To use in Kaggle:
+1. Create a new notebook/script.
+2. Add the 'Heartbeat' dataset to the session.
+3. Run the pipeline to train and save models.
 """
 
 # %% [markdown]
