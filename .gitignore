@@ -23,3 +23,7 @@ training/**/output.txt
 # OS files
 .DS_Store
 Thumbs.db
+mitbih_train.csv
+mitbih_train.csv.zip
+models/*.pth
+.venv/
