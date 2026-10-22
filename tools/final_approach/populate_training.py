@@ -1,8 +1,9 @@
+# Run from the repository root (paths below are relative to it).
 import json
 import os
 
 def populate_signal_to_class():
-    path = '/home/me/mini-proj/final_approach/1_train_signal_to_class.ipynb'
+    path = 'notebooks/final_approach/1_train_signal_to_class.ipynb'
     with open(path, 'r') as f: nb = json.load(f)
     
     nb['cells'].append({
@@ -65,7 +66,7 @@ def populate_signal_to_class():
     with open(path, 'w') as f: json.dump(nb, f, indent=1)
 
 def populate_image_to_signal():
-    path = '/home/me/mini-proj/final_approach/2_train_image_to_signal.ipynb'
+    path = 'notebooks/final_approach/2_train_image_to_signal.ipynb'
     with open(path, 'r') as f: nb = json.load(f)
     
     nb['cells'].append({
@@ -127,7 +128,7 @@ def populate_image_to_signal():
     with open(path, 'w') as f: json.dump(nb, f, indent=1)
 
 def populate_image_to_class():
-    path = '/home/me/mini-proj/final_approach/3_train_image_to_class.ipynb'
+    path = 'notebooks/final_approach/3_train_image_to_class.ipynb'
     with open(path, 'r') as f: nb = json.load(f)
     
     nb['cells'].append({

@@ -1,6 +1,6 @@
 #!/bin/bash
-# Compile LaTeX to PDF
-cd /home/me/Desktop/esi/dl/mini-proj/latex_report
+# Compile the LaTeX report to PDF (needs pdflatex and biber).
+cd "$(dirname "$0")" || exit 1
 
 # First pass
 pdflatex -interaction=nonstopmode main.tex > /dev/null 2>&1
@@ -17,4 +17,4 @@ pdflatex -interaction=nonstopmode main.tex > /dev/null 2>&1
 # Clean aux files
 rm -f *.aux *.log *.out *.toc *.bbl *.blg *.bcf *.run.xml
 
-echo "PDF compiled: /home/me/Desktop/esi/dl/mini-proj/latex_report/main.pdf"
+echo "PDF compiled: $(pwd)/main.pdf"

@@ -296,13 +296,13 @@ We have built an evolutionary pipeline, pushing boundaries from basic CNNs to mu
 ## Appendix
 
 ### A.1 Unified Pipeline Code Snippet
-Core model and trainer implementations available in `ecg_unified_pipeline.py`
+Core model and trainer implementations available in `src/ecg_unified_pipeline.py`
 
 ### A.2 Training Logs
-Versioned logs available in `training/v1-v4/output.txt`
+Versioned logs available in `experiments/signal_to_class/v1-v4` (the `output.txt` logs are not in the repository)
 
 ### A.3 Research Summaries
-Full image-based analysis summaries in `research/image_to_signal/summary.md` and `research/image_to_class/summary.md`
+Full image-based analysis summaries in `docs/research/image_to_signal/summary.md` and `docs/research/image_to_class/summary.md`
 
 ### A.4 Kernel URLs
 1. Main Training (v4): https://www.kaggle.com/code/houdaifabouamine/ecg-research-v4-optimized-training
@@ -312,5 +312,5 @@ Full image-based analysis summaries in `research/image_to_signal/summary.md` and
 ---
 
 **Project Repository:** [GitHub URL to be added]  
-**Presentation Script:** `pitch/final_pitch_script.md`  
-**LaTeX Source:** `latex_report/` (compile with `compile.sh` or upload to Overleaf)
+**Presentation Script:** `docs/pitch/final_pitch_script.md`  
+**LaTeX Source:** `report/` (compile with `compile.sh` or upload to Overleaf)

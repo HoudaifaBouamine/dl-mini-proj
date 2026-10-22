@@ -1,8 +1,9 @@
+# Run from the repository root (paths below are relative to it).
 import json
 import os
 
 def update_image_to_signal():
-    path = "/home/me/mini-proj/supervisor_notebooks/learning_image_to_signal.ipynb"
+    path = "notebooks/supervisor/learning_image_to_signal.ipynb"
     if not os.path.exists(path): return
     with open(path, 'r') as f: nb = json.load(f)
     nb['cells'][0]['source'] = [
@@ -129,7 +130,7 @@ def update_image_to_signal():
     with open(path, 'w') as f: json.dump(nb, f, indent=1)
 
 def update_signal_to_class():
-    path = "/home/me/mini-proj/supervisor_notebooks/learning_signal_to_class.ipynb"
+    path = "notebooks/supervisor/learning_signal_to_class.ipynb"
     if not os.path.exists(path): return
     with open(path, 'r') as f: nb = json.load(f)
     nb['cells'][0]['source'] = [
@@ -189,7 +190,7 @@ def update_signal_to_class():
     with open(path, 'w') as f: json.dump(nb, f, indent=1)
 
 def update_image_to_class():
-    path = "/home/me/mini-proj/supervisor_notebooks/learning_image_to_class.ipynb"
+    path = "notebooks/supervisor/learning_image_to_class.ipynb"
     if not os.path.exists(path): return
     with open(path, 'r') as f: nb = json.load(f)
     nb['cells'][0]['source'] = [

@@ -1,3 +1,4 @@
+# Run from the repository root (paths below are relative to it).
 import json
 import os
 
@@ -31,7 +32,7 @@ def create_research_notebook():
                     "import matplotlib.pyplot as plt\n",
                     "import os\n",
                     "\n",
-                    "DATA_PATH = '../mitbih_train.csv'\n",
+                    "DATA_PATH = '../../data/mitbih_train.csv'\n",
                     "if os.path.exists(DATA_PATH):\n",
                     "    df = pd.read_csv(DATA_PATH, header=None)\n",
                     "    print(f'✅ Total dataset size: {len(df)} rows')\n",
@@ -81,7 +82,7 @@ def create_research_notebook():
         "nbformat": 4, "nbformat_minor": 4
     }
     
-    with open('/home/me/mini-proj/final_approach/0_research_and_problematic.ipynb', 'w') as f:
+    with open('notebooks/final_approach/0_research_and_problematic.ipynb', 'w') as f:
         json.dump(nb, f, indent=1)
 
 def create_training_notebooks():
@@ -122,7 +123,7 @@ def create_training_notebooks():
                         "from torch.utils.data import DataLoader, TensorDataset, Dataset\n",
                         "\n",
                         "DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')\n",
-                        "DATA_PATH = '../mitbih_train.csv'\n",
+                        "DATA_PATH = '../../data/mitbih_train.csv'\n",
                         "\n",
                         "def load_production_data(sample_frac=0.1):\n",
                         "    if not os.path.exists(DATA_PATH): return None\n",
@@ -140,7 +141,7 @@ def create_training_notebooks():
             },
             "nbformat": 4, "nbformat_minor": 4
         }
-        with open(f'/home/me/mini-proj/final_approach/{filename}', 'w') as f:
+        with open(f'notebooks/final_approach/{filename}', 'w') as f:
             json.dump(nb, f, indent=1)
 
 def create_inference_notebook():
@@ -173,7 +174,7 @@ def create_inference_notebook():
         },
         "nbformat": 4, "nbformat_minor": 4
     }
-    with open('/home/me/mini-proj/final_approach/4_inference_and_deployment.ipynb', 'w') as f:
+    with open('notebooks/final_approach/4_inference_and_deployment.ipynb', 'w') as f:
         json.dump(nb, f, indent=1)
 
 if __name__ == '__main__':

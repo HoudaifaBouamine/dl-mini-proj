@@ -5,7 +5,7 @@ This folder contains the complete LaTeX source for the mini-project report.
 ## File Structure
 
 ```
-latex_report/
+report/
 ├── main.tex                      # Main document
 ├── packages.tex                  # Package imports
 ├── compile.sh                    # Compilation script
@@ -29,18 +29,18 @@ latex_report/
 
 ### Option 1: Local LaTeX Installation
 ```bash
-cd /home/me/Desktop/esi/dl/mini-proj/latex_report
+cd report
 ./compile.sh
 ```
 
 ### Option 2: Online LaTeX (Overleaf, etc.)
-1. Upload the entire `latex_report/` folder to Overleaf
+1. Upload the entire `report/` folder to Overleaf
 2. Set `main.tex` as the main document
 3. Click "Recompile"
 
 ### Option 3: Using Kaggle/Colab (if LaTeX installed)
 ```python
-!cd /kaggle/working/latex_report && bash compile.sh
+!cd /kaggle/working/report && bash compile.sh
 ```
 
 ## Required LaTeX Packages

@@ -1,3 +1,4 @@
+# Run from the repository root (paths below are relative to it).
 import pandas as pd
 import os
 
@@ -24,4 +25,4 @@ def create_balanced_sample(full_path, output_path, n_per_class=200):
     print(f"✅ Balanced sample saved to {output_path} ({len(balanced_df)} rows)")
 
 if __name__ == "__main__":
-    create_balanced_sample("/home/me/mini-proj/mitbih_train.csv", "/home/me/mini-proj/supervisor_notebooks/sample_mitbih.csv")
+    create_balanced_sample("data/mitbih_train.csv", "notebooks/supervisor/sample_mitbih.csv")

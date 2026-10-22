@@ -1,10 +1,11 @@
+# Run from the repository root (paths below are relative to it).
 import json
 import os
 
 def update_class_explanations():
     files = [
-        "/home/me/mini-proj/supervisor_notebooks/learning_signal_to_class.ipynb",
-        "/home/me/mini-proj/supervisor_notebooks/learning_image_to_class.ipynb"
+        "notebooks/supervisor/learning_signal_to_class.ipynb",
+        "notebooks/supervisor/learning_image_to_class.ipynb"
     ]
     
     explanation_md = [

@@ -11,7 +11,7 @@
 *   **Title:** Decoding the Heartbeat: A Deep Learning Journey in ECG Arrhythmia Classification
 *   **Subtitle:** Building the Next-Generation AI Cardiologist Assistant
 *   **Visual:**
-![ECG Concept Art](/home/me/.gemini/antigravity/brain/b2101cfb-2f04-4539-9dab-8e7df6f720f2/pitch_slide1_ecg_concept_1777446025696.png)
+*(concept image not included in the repository)*
 
 ### Slide 2: The Hook & The Problem
 *   **Story:** Cardiovascular disease is the leading cause of death globally. The ECG is our best window into the heart, but analyzing millions of heartbeats is tedious and error-prone. 
@@ -77,7 +77,7 @@ graph LR
 *   **Content:** Showcasing the Web Application interface. 
 *   **Design Aesthetics:** Dark mode, glassmorphism, real-time signal plotting.
 *   **Visual:** 
-![Dashboard UI Mockup](/home/me/.gemini/antigravity/brain/b2101cfb-2f04-4539-9dab-8e7df6f720f2/pitch_slide9_dashboard_mockup_1777446040099.png)
+*(mockup image not included in the repository)*
 
 ### Slide 10: Conclusion & Future Horizons
 *   **Summary:** We built an evolutionary pipeline, pushing the boundaries from basic CNNs to multi-scale transformers.

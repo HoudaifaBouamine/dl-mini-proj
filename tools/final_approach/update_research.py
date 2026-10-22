@@ -1,6 +1,7 @@
+# Run from the repository root (paths below are relative to it).
 import json
 
-path = '/home/me/mini-proj/final_approach/0_research_and_problematic.ipynb'
+path = 'notebooks/final_approach/0_research_and_problematic.ipynb'
 with open(path, 'r') as f: nb = json.load(f)
 
 # Clear existing cells and rebuild
@@ -41,7 +42,7 @@ nb['cells'].append({
         "import matplotlib.pyplot as plt\n",
         "import os\n",
         "\n",
-        "DATA_PATH = '../mitbih_train.csv'\n",
+        "DATA_PATH = '../../data/mitbih_train.csv'\n",
         "class_names = ['Normal', 'SVEB', 'VEB', 'Fusion', 'Unknown']\n",
         "colors = ['#3498db', '#e74c3c', '#2ecc71', '#f1c40f', '#9b59b6']\n",
         "\n",

@@ -1,6 +1,7 @@
+# Run from the repository root (paths below are relative to it).
 import json
 
-path = '/home/me/mini-proj/final_approach/4_inference_and_deployment.ipynb'
+path = 'notebooks/final_approach/4_inference_and_deployment.ipynb'
 nb = {
  "cells": [
   {
