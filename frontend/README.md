@@ -1,75 +1,21 @@
-# Nuxt Minimal Starter
+# ECG Inspire AI - frontend demo
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Nuxt 4 + PrimeVue + Tailwind CSS v4 + Chart.js single-page demo with three tabs
+(Signal -> Class, Image -> Signal, Image -> Class). The UI lives in `app/app.vue`.
 
-## Setup
+**Important:** the demo is a UI mock-up. It does not load any trained model. Waveforms are
+generated in the browser and the predictions, confidences and "digitised" signals are
+hard-coded values returned after a `setTimeout`. See the top-level README.
 
-Make sure to install dependencies:
+## Run
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+Package manager: pnpm (`pnpm-lock.yaml`).
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+pnpm install        # runs `nuxt prepare` as postinstall
+pnpm dev            # http://localhost:3000
+pnpm build          # production build
+pnpm preview        # preview the production build
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Sample images for the "Use Sample" buttons are in `public/samples/`.

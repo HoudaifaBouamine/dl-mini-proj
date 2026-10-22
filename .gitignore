@@ -1,29 +1,54 @@
-# Dependencies
+# Node / Nuxt
 node_modules/
-.output/
 .nuxt/
+.output/
+.nitro/
 dist/
 .cache/
 
-# Sensitive data
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Data and model artefacts (download MIT-BIH from Kaggle into data/)
+data/
+checkpoints/
+models/
+*.pth
+*.pt
+*.onnx
+mitbih_train.csv
+mitbih_test.csv
+mitbih_train.csv.zip
+runs/
+kaggle_output/
+training/**/output.txt
+experiments/**/output.txt
+
+# Secrets
+.env
+.env.*
 kaggle.json
 *.pem
 *.key
 
-# Tool specific
+# LaTeX build files
+report/*.aux
+report/*.log
+report/*.out
+report/*.toc
+report/*.bbl
+report/*.blg
+report/*.bcf
+report/*.run.xml
+
+# Tools / editors / OS
 .agent/
 .vscode/
 .idea/
-
-# Large files/logs
-kaggle_output/
 *.log
-training/**/output.txt
-
-# OS files
 .DS_Store
 Thumbs.db
-mitbih_train.csv
-mitbih_train.csv.zip
-models/*.pth
-.venv/
